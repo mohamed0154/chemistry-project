@@ -20,6 +20,12 @@ use App\Http\Controllers\Laout\LaoutController;
 */
 
 
+Route::get('/test',function(){
+ return view('test');
+
+ });
+
+
 
 
 

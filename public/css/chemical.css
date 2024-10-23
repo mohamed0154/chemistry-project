@@ -1,0 +1,30 @@
+.chemical-head {
+}
+
+.chemical-landing img {
+    /*  */
+    width: 100%;
+}
+.chemical-landing img {
+    max-width: 100%;
+}
+/* @media (max-width: 991px) {
+    .chemical .chemical-landing {
+        height: calc(85vh - 121px);
+    }
+}
+
+@media (max-width: 500px) {
+    .chemical .chemical-landing {
+        height: calc(50vh - 121px);
+    }
+} */
+
+.chemical .chemical-inform .inform p {
+    width: 70%;
+}
+@media (max-width: 767px) {
+    .chemical .chemical-inform .inform p {
+        width: 100%;
+    }
+}

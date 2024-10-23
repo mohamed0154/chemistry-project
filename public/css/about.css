@@ -1,0 +1,43 @@
+.about .container .about-heading h1 span {
+    display: inline-block;
+    width: 100px;
+    height: 2px;
+    background-color: yellow;
+}
+.about .container .about-heading ul {
+    padding: 1rem !important;
+}
+
+.about .container .the-plan .img-logo {
+    position: absolute;
+    top: -29px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 60px;
+}
+.about .container .the-plan div {
+    border: 2px solid;
+    border-radius: 15px;
+    background: linear-gradient(
+        175.54deg,
+        rgba(114, 65, 32, 0.432) -2.45%,
+        rgba(237, 200, 7, 0.31) 57.73%,
+        rgba(137, 234, 255, 0.74) 100%
+    );
+    transition: 0.5s linear;
+}
+.about .container .the-plan div p {
+    font-weight: 500;
+}
+@media (max-width: 767px) {
+    .about .container .the-plan div {
+        margin-top: 10px;
+    }
+}
+.about .container .the-plan div.scale {
+    transform: scale(0.9);
+}
+.about .container .the-plan div:hover {
+    transform: scale(0.8);
+}

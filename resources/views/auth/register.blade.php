@@ -1,4 +1,56 @@
+@extends('sharing.master')
+@section('content')
+    <div class="page-login d-flex align-items-center justify-content-center">
+        <div class="signin-content ">
+            <div class="signin-logo ms-md-auto me-md-auto">
+            </div>
+            <div class="form-content fw-bold text-center ms-md-auto me-md-auto">
+                <h1 class="fw-bold">Sign Up</h1>
+                <form action="{{ route('user.login') }}" method="POST"
+                    class="d-flex justify-content-evenly flex-column align-items-center">
+                    @csrf
+                    @if (Session::has('success'))
+                        <div class="aler alert-success">
+                            {{ Session::get('success') }}
+                        </div>
+                    @endif
+                    <div class="input-content position-relative ">
+                        <input type="text" name="username" placeholder="Username">
+                        <i class="fa-solid fa-user position-absolute"></i>
 
+                        @error('username')
+                            <div class="alert alert-danger">{{ isset($message) ? $message : '' }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="input-content position-relative">
+                        <input class="" type="email" name="email" placeholder="Email">
+                        <i class="fa-solid fa-envelope position-absolute"></i>
+                        @error('email')
+                            <div class="alert alert-danger">{{ isset($message) ? $message : '' }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="input-content position-relative">
+                        <input type="password" name="password" placeholder="password">
+                        <i class="fa-solid fa-lock position-absolute"></i>
+                        @error('password')
+                            <div class="alert alert-danger">{{ isset($message) ? $message : '' }}</div>
+                        @enderror
+                    </div>
+
+                    <input class="btn bg-info fw-bold mt-2 mb-2" type="submit" value="Sign Up">
+                </form>
+                <span class="to-create-accound">I have an account? <a href="{{ route('login') }}" class="fw-bold">
+                        Login</a></span>
+            </div>
+        </div>
+    </div>
+@stop
+
+
+
+{{--
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,4 +96,4 @@
     </form>
   </div>
 </body>
-</html>
+</html> --}}

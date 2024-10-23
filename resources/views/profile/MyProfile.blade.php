@@ -1,4 +1,86 @@
-<!DOCTYPE html>
+@extends('sharing.master')
+@section('content')
+    <div class="profile">
+        <div class="profile-nav d-flex">
+            <div class="logo  d-flex align-items-center ">
+                <img class="image-fluid" src="images/logo.png" alt="">
+                <span class="d-block ps-2">LAB NERD</span>
+            </div>
+            <a href="{{ route('home_page') }}" class="btn btn-outline-dark ms-auto d-md-none">
+                <i class="fa-solid fa-house fs-1"></i>
+            </a>
+        </div>
+        {{-- end profile-nav --}}
+        {{-- content --}}
+        <div class="content row m-0">
+            <div class="col-lg-4 col-md-5 p-0 side-profile text-white text-center ">
+                <div class="edit-profile-image d-flex flex-column align-items-center gap-4 justify-content-md-center">
+                    <div class="profile-photo "></div>
+                    <form action="" class="w-100 ">
+                        <input type="submit" class="form-control m-auto fs-4 fw-700 rounded-5" value="Edit Profile">
+                    </form>
+                </div>
+                <div class="back-home d-none d-md-block">
+                    <a href="{{ route('home_page') }}"
+                        class="d-block mt-5 fs-3 m-auto p-4 pt-2 pb-2 rounded-5 text-black text-decoration-none">
+                        <i class="fa-solid fa-house fs-1 d-block mt-1"></i>
+                        Home
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-8 col-md-7 profile-inform pe-0">
+                <div class="inform mt-4">
+                    <h1>Account Information</h1>
+                    <div class="inform-data   p-4 ps-3 pe-3 pb-2">
+                        <div class="box-inform  d-flex justify-content-between p-2">
+                            <span>First name :</span><span>Mohamed fouad mohamed</span>
+                        </div>
+                        <div class="box-inform  d-flex justify-content-between p-2">
+                            <span>second name :</span><span>valu</span>
+                        </div>
+                        <div class="box-inform  d-flex justify-content-between p-2">
+                            <span>Eamil :</span><span>valu</span>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="change-pass mt-4">
+                    <h3>Change Your Password</h3>
+                    <form action="" class="p-4 ps-3 pe-3">
+                        <div class="input-group  d-flex justify-content-between p-2">
+                            <label for="" class="w-50">Current Password</label>
+                            <input type="password" name="password" id="" class=" form-control rounded-1">
+                        </div>
+                        <div class="input-group  d-flex justify-content-between p-2">
+                            <label for="" class="w-50">New Password</label>
+                            <input type="password" name="password" id="" class=" form-control rounded-1">
+                        </div>
+                        <div class="input-group  d-flex justify-content-between p-2 ">
+                            <label for="" class="w-50">Confirm Password</label>
+                            <input type="password" name="confirm password" id="" class=" form-control rounded-1">
+                        </div>
+                        <div class="input-group buttons d-flex justify-content-end p-2">
+                            <input type="submit" value="Update" class="btn btn-primary">
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+@stop
+
+
+
+
+
+
+
+
+{{-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -140,4 +222,4 @@
         <!-- End -->
 </body>
 
-</html>
+</html> --}}

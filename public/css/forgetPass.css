@@ -1,0 +1,17 @@
+.verify-email {
+    padding: 30px 0;
+}
+
+.reset-password .reset-password-content .lg-arrow {
+    padding: 9px 10px;
+}
+.reset-password .reset-password-content span {
+    padding: 5px 10px;
+    background-color: rgb(255, 215, 115);
+}
+.verify-email .reset-password-content form {
+    height: 35%;
+}
+.verify-email .reset-password-content {
+    height: calc(100vh - 120px);
+}
