@@ -55,7 +55,7 @@ Route::get('/',function(){
         Route::get('/home', [HomeController::class, 'show'])->name('home');
 
         Route::get('/About', [LaoutController::class, 'about_view'])->name('about_us');
-        Route::get('/Chemical', [LaoutController::class, 'Chemical'])->name('chemical');
+        Route::get('/chemical', [LaoutController::class, 'Chemical'])->name('chemical');
 
         Route::get('/profile', [ProfileController::class, 'user_profile'])->name('profile');
         Route::POST('/add_photo', [ProfileController::class, 'edit_photo'])->name('photo');
