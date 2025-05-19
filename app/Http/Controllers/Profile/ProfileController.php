@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Profile;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdateUserProfile;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Users;
 use Illuminate\Support\Facades\Auth;
@@ -15,32 +17,24 @@ class ProfileController extends Controller
 {
 
 
-
-
     public function user_profile(){
         $user_data= Auth()->user();
         return view('profile.MyProfile',compact('user_data'));
     }
 
-    public function edit_password(Request $request){
-        if(isset($request) && $request != null){
 
-            $request->validate([
-              'currentPass'=>'required|max:12',
-              'newPass'=>'required|max:12',
-              'confirmPass'=>'required|same:newPass',
-            ]);
+    public function update(UpdateUserProfile $request){
+      
 
-             $user=Users::find(auth()->user()->id);
-             if(password_verify($request->currentPass,$user->password)){
-                $data=$request->except('confirmPass','currentPass','newPass');
-                $data['password']=Hash::make($request->newPass);
+             $user=Auth::user();
+             if(Hash::check($request->current_password,$user->password)){
+                $data=$request->except('password_confirmation','current_password','password');
+                $data['password']=Hash::make($request->password);
                 $user->update($data);
-                return redirect(route('user.profile'))->with('success','Updated Done');
+                return redirect(route('users.profile'))->with('success','Updated Done');
             }
-
              return redirect()->back()->with(['failed'=>'Your Password is not correct']);
-        }
+        
     }
 
     public function edit_photo(Request $request){

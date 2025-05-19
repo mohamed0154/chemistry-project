@@ -7,7 +7,7 @@
     <div class="chemical pt-5">
         <div class="container-fluid ">
             <div class="chemical-landing  pb-5">
-                <img src="images/Periodic_table_large.svg">
+                <img src="{{ asset('images/Periodic_table_large.svg') }}">
             </div>
 
             <div class="chemical-inform row justify-content-between align-items-center pt-5 m-0 text-md-start text-center">

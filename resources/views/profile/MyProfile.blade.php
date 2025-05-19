@@ -46,10 +46,27 @@
                 <hr>
                 <div class="change-pass mt-4">
                     <h3>Change Your Password</h3>
-                    <form action="" class="p-4 ps-3 pe-3">
+                    @if ($errors->any())
+
+                        <div class="alert alert-danger">
+
+                            <ul>
+
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+
+                            </ul>
+
+                        </div>
+
+                    @endif
+                    <form action="{{ route('users.profile-update') }}" method='post' class="p-4 ps-3 pe-3">
+                        @csrf
+                        @method('put')
                         <div class="input-group  d-flex justify-content-between p-2">
                             <label for="" class="w-50">Current Password</label>
-                            <input type="password" name="password" id="" class=" form-control rounded-1">
+                            <input type="password" name="current_password" id="" class=" form-control rounded-1">
                         </div>
                         <div class="input-group  d-flex justify-content-between p-2">
                             <label for="" class="w-50">New Password</label>
@@ -57,7 +74,8 @@
                         </div>
                         <div class="input-group  d-flex justify-content-between p-2 ">
                             <label for="" class="w-50">Confirm Password</label>
-                            <input type="password" name="confirm password" id="" class=" form-control rounded-1">
+                            <input type="password" name="password_confirmation" id=""
+                                class=" form-control rounded-1">
                         </div>
                         <div class="input-group buttons d-flex justify-content-end p-2">
                             <input type="submit" value="Update" class="btn btn-primary">

@@ -29,7 +29,7 @@ Route::get('/',function(){
         Route::get('/', [HomeController::class, 'welcome_show'])->name('welcome');
 
         /////////////////////////////////Authentication///////////////////////////
-        Route::get('/register', [AuthrController::class, 'show'])->name('sign_up_view');
+        Route::get('/register', [AuthrController::class, 'register'])->name('sign_up_view');
         Route::POST('/store', [AuthrController::class, 'store'])->name('store');
         Route::get('/login', [AuthrController::class, 'login_view'])->name('login');
         Route::POST('/auth', [AuthrController::class, 'Authenticate'])->name('auth');
@@ -59,7 +59,9 @@ Route::get('/',function(){
 
         Route::get('/profile', [ProfileController::class, 'user_profile'])->name('profile');
         Route::POST('/add_photo', [ProfileController::class, 'edit_photo'])->name('photo');
-        Route::POST('/edit', [ProfileController::class, 'edit_password'])->name('edit');
+        // Route::POST('/edit', [ProfileController::class, 'edit_password'])->name('edit');
+        Route::put('/profile-update', [ProfileController::class, 'update'])->name('profile-update');
+
 
         Route::get('/Quiz1', [QuizController::class, 'quiz_one'])->name('Quiz_one');
         Route::get('/Quiz2', [QuizController::class, 'quiz_two'])->name('Quiz_two');

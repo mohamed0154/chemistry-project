@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Password;
 
 class AuthrController extends Controller
 {
-    public function show(){
+    public function register(){
         return view("auth.register");
     }
 
