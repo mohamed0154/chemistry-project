@@ -19,24 +19,20 @@ use App\Http\Controllers\Laout\LaoutController;
 |
 */
 
-
-Route::get('/test',function(){
- return view('test');
-
- });
+Route::get('/',function(){
+    return redirect(route('users.welcome'));
+});
 
 
 
-
-
-    Route::group(['middleware'=>'guest'],function(){
-        Route::get('/', [HomeController::class, 'welcome_show'])->name('welcome_users');
+    Route::group(['middleware'=>'guest','prefix'=>'users','as'=>'users.'],function(){
+        Route::get('/', [HomeController::class, 'welcome_show'])->name('welcome');
 
         /////////////////////////////////Authentication///////////////////////////
         Route::get('/register', [AuthrController::class, 'show'])->name('sign_up_view');
         Route::POST('/store', [AuthrController::class, 'store'])->name('store');
         Route::get('/login', [AuthrController::class, 'login_view'])->name('login');
-        Route::POST('/user/login', [AuthrController::class, 'Authenticate'])->name('user.login');
+        Route::POST('/auth', [AuthrController::class, 'Authenticate'])->name('auth');
 
 
 
@@ -54,16 +50,16 @@ Route::get('/test',function(){
 
 
 
-    Route::group(['middleware'=>'auth'],function(){
+    Route::group(['middleware'=>'auth','prefix'=>'users','as'=>'users.'],function(){
         /////////////////////////////////Layouts////////////////////////////////////////
-        Route::get('/home', [HomeController::class, 'home_page'])->name('home_page');
+        Route::get('/home', [HomeController::class, 'show'])->name('home');
 
         Route::get('/About', [LaoutController::class, 'about_view'])->name('about_us');
         Route::get('/Chemical', [LaoutController::class, 'Chemical'])->name('chemical');
 
-        Route::get('/profile', [ProfileController::class, 'user_profile'])->name('user.profile');
-        Route::POST('/add_photo', [ProfileController::class, 'edit_photo'])->name('user.photo');
-        Route::POST('/edit_profile', [ProfileController::class, 'edit_password'])->name('edit.profile');
+        Route::get('/profile', [ProfileController::class, 'user_profile'])->name('profile');
+        Route::POST('/add_photo', [ProfileController::class, 'edit_photo'])->name('photo');
+        Route::POST('/edit', [ProfileController::class, 'edit_password'])->name('edit');
 
         Route::get('/Quiz1', [QuizController::class, 'quiz_one'])->name('Quiz_one');
         Route::get('/Quiz2', [QuizController::class, 'quiz_two'])->name('Quiz_two');

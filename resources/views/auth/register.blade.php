@@ -1,4 +1,5 @@
 @extends('sharing.master')
+@section('title','sign-up')
 @section('content')
     <div class="page-login d-flex align-items-center justify-content-center">
         <div class="signin-content ">
@@ -6,16 +7,19 @@
             </div>
             <div class="form-content fw-bold text-center ms-md-auto me-md-auto">
                 <h1 class="fw-bold">Sign Up</h1>
-                <form action="{{ route('user.login') }}" method="POST"
-                    class="d-flex justify-content-evenly flex-column align-items-center">
-                    @csrf
+                <form action="{{ route('users.store') }}" method="POST"
+                  class="d-flex justify-content-evenly flex-column align-items-center">
+                 
+                  @csrf
+                    {{-- Register Success --}}
                     @if (Session::has('success'))
                         <div class="aler alert-success">
                             {{ Session::get('success') }}
                         </div>
                     @endif
+
                     <div class="input-content position-relative ">
-                        <input type="text" name="username" placeholder="Username">
+                        <input type="text" name="username" value='{{ old('username') }}' placeholder="Username">
                         <i class="fa-solid fa-user position-absolute"></i>
 
                         @error('username')
@@ -24,7 +28,7 @@
                     </div>
 
                     <div class="input-content position-relative">
-                        <input class="" type="email" name="email" placeholder="Email">
+                        <input class="" type="email" name="email" value='{{ old('email') }}' placeholder="Email">
                         <i class="fa-solid fa-envelope position-absolute"></i>
                         @error('email')
                             <div class="alert alert-danger">{{ isset($message) ? $message : '' }}</div>
@@ -32,7 +36,7 @@
                     </div>
 
                     <div class="input-content position-relative">
-                        <input type="password" name="password" placeholder="password">
+                        <input type="password" name="password" value='{{ old('password') }}' placeholder="password">
                         <i class="fa-solid fa-lock position-absolute"></i>
                         @error('password')
                             <div class="alert alert-danger">{{ isset($message) ? $message : '' }}</div>
@@ -41,7 +45,7 @@
 
                     <input class="btn bg-info fw-bold mt-2 mb-2" type="submit" value="Sign Up">
                 </form>
-                <span class="to-create-accound">I have an account? <a href="{{ route('login') }}" class="fw-bold">
+                <span class="to-create-accound">I have an account? <a href="{{ route('users.login') }}" class="fw-bold">
                         Login</a></span>
             </div>
         </div>

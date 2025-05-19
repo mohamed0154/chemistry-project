@@ -1,10 +1,18 @@
 @extends('sharing.master')
+
+
+@section('navbar')
+<!-- start Navication -->
+<div id="" class="header pb-5">
+    @include('layouts.navigation')
+</div>
+<!-- end Navication -->
+@endsection
+
+
 @section('content')
-    <!-- start Navication -->
-    <div id="" class="header pb-5">
-        @include('layouts.navigation')
-    </div>
-    <!-- end Navication -->
+
+
     <!-- Start Welcome -->
     <div class="home-content overflow-hidden">
         <div class="row ">

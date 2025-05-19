@@ -24,9 +24,9 @@ class AuthRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'username'=>'required',
+            'username'=>'required|string|max:100|min:2',
             'email'=> 'required|email|unique:users,email',
-            'password'=>'required|max:12'
+            'password'=>'required|max:12|min:6'
         ];
     }
 

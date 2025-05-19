@@ -3,8 +3,8 @@
     <div class="container-fluid bg-white align-items-start ">
 
         <div class="logo">
-            <div class="photo">
-                <img src="./images/logo.png" class="">
+            <div class="photo ">
+                <img src="{{ asset('images/logo.png') }}" width="60px" class="w-20 h-10">
                 <span class="logo-title"><b>Lab_Nerd</b></span>
             </div>
             <div class="wave ">
@@ -21,43 +21,44 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-end " id="navbarSupportedContent">
+           {{-- if Authenticated --}}
             @auth
                 <ul class="navbar-nav me-lg-5 mb-2 mb-lg-0 gap-2 gap-lg-4 p-2 nav-lin">
                     <li class="nav-item">
                         <a class="nav-link active pe-0" aria-current="page" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link pe-0" href="{{ route('about_us') }}">About</a>
+                        <a class="nav-link pe-0" href="{{ route('users.about_us') }}">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link pe-0" href="{{ route('chemical') }}">Chemical Reaction</a>
+                        <a class="nav-link pe-0" href="{{ route('users.chemical') }}">Chemical Reaction</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link pe-0" href="">Experiment</a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link pe-0" href="true">Quiz</a>
-                    </li>
+                    </li> --}}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle pe-0" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
                             User
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{ route('user.profile') }}">Profile</a></li>
+                            <li><a class="dropdown-item" href="{{ route('users.profile') }}">Profile</a></li>
                             <li><a class="dropdown-item" href="#">Another action</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="{{ route('logout') }}">Logout</a></li>
+                            <li><a class="dropdown-item" href="{{ route('users.logout') }}">Logout</a></li>
                         </ul>
                     </li>
 
                 </ul>
             @else
                 <div class="  auth-buttons align-items-start p-3 mt-2 d-flex  flex-column flex-lg-row">
-                    <a href="{{ route('login') }}" class="btn btn-primary ps-3 pe-3 me-2 fw-bold text-black">login</a>
-                    <a href="{{ route('sign_up_view') }}"
+                    <a href="{{ route('users.login') }}" class="btn btn-primary ps-3 pe-3 me-2 fw-bold text-black">login</a>
+                    <a href="{{ route('users.sign_up_view') }}"
                         class="btn btn-primary mt-2 mt-lg-0 ps-3 pe-3 fw-bold text-black">register</a>
                 </div>
             @endauth

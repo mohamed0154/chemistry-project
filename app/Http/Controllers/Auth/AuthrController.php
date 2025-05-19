@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Users;
 use Illuminate\Http\Request;
 use App\Http\Requests\Auth\AuthRequest;
+use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -17,43 +18,42 @@ use Illuminate\Support\Facades\Password;
 class AuthrController extends Controller
 {
     public function show(){
-        return view("auth/register");
+        return view("auth.register");
     }
 
 
     public function store(AuthRequest $request){
 
-        Users::create([
+        User::create([
             'username'=>$request->username,
             'email'=> $request->email,
             'password'=>Hash::make($request->password),
         ]);
-        return redirect(url('login'))->with('success','User Created Done');
+        return redirect(url('users/register'))->with('success','User Created Done');
 
     }
 
-
-
-
+    //Login Show
     public function login_view( ){
-        return view("auth/login");
+        return view("auth.login");
     }
 
+    // get Authenticated
     public function Authenticate(Request $request ){
-            $request->validate([
-                'email'=>'required|email',
-                'password'=>'required|string|max:12',
-            ]);
 
-        if(isset($request) && !empty($request)){
-            $remember=$request->has('remember_me')? true : false;
-            if(Auth::attempt(['email'=>$request->email,'password'=>$request->password],$remember)){
+        $request->validate([
+            'email'=>'required|email|exists:users,email',
+            'password'=>'required|string|max:12|min:6',
+        ]);
 
-                return redirect(route('home_page'));
-
-            }
-            return back()->with('error','user or pass is incorrect');
+        $remember=$request->has('remember_me')? true : false;
+        
+        if(Auth::attempt(['email'=>$request->email,'password'=>$request->password],$remember)){
+            return redirect(route('users.home'));
         }
+       
+        return back()->with('failed','user or pass is incorrect');
+        
     }
 
     public function email_ensure(){
@@ -75,11 +75,11 @@ class AuthrController extends Controller
                 'email'=>'required|email|exists:users',
             ]);
 
-            $user=Users::where('email',$request->email)->first();
+            $user=User::where('email',$request->email)->first();
            if(isset($user) && $user != null)
            {
 
-            return redirect(route('reset_form', ['q' => $user->id]));
+            return redirect(route('users.reset_form', ['q' => $user->id]));
            }
 
         }
@@ -115,6 +115,6 @@ class AuthrController extends Controller
           $user=Auth::guard('web')->user();
           Auth::guard('web')->logout($user);
 
-          return redirect(route('login'));
+          return redirect(route('users.login'));
     }
 }

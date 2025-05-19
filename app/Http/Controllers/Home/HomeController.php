@@ -17,21 +17,22 @@ class HomeController extends Controller
         return view('welcome');
     }
 
-    public function home_page(){
-        return view('home');
+
+    public function show(){
+        return view('Home');
     }
-
-
-
-
 
 
     public function quiz_one(){
         return view('tasks.QuizOne');
     }
+
+
     public function quiz_two(){
         return view('tasks.QuizTwo');
     }
+
+
     public function quiz_three(){
         return view('tasks.QuizThree');
     }

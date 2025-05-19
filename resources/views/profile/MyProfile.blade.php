@@ -6,7 +6,7 @@
                 <img class="image-fluid" src="images/logo.png" alt="">
                 <span class="d-block ps-2">LAB NERD</span>
             </div>
-            <a href="{{ route('home_page') }}" class="btn btn-outline-dark ms-auto d-md-none">
+            <a href="{{ route('users.home') }}" class="btn btn-outline-dark ms-auto d-md-none">
                 <i class="fa-solid fa-house fs-1"></i>
             </a>
         </div>
@@ -21,7 +21,7 @@
                     </form>
                 </div>
                 <div class="back-home d-none d-md-block">
-                    <a href="{{ route('home_page') }}"
+                    <a href="{{ route('users.home') }}"
                         class="d-block mt-5 fs-3 m-auto p-4 pt-2 pb-2 rounded-5 text-black text-decoration-none">
                         <i class="fa-solid fa-house fs-1 d-block mt-1"></i>
                         Home
